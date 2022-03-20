@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Audio Visualizer PoC</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                border: 0;
+            }
+
+            body {
+                font-family: Avenir, Helvetica, Arial, sans-serif;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+                font-size: 14px;
+            }
+
+            a {
+                color: #3949ca;
+                text-decoration: none;
+            }
+
+            a:hover {
+                color: #050344;
+            }
+
+            #visualisation {
+                display: block;
+                z-index: 1;
+            }
+
+            #visualisation, html, body {
+                height: 100%;
+                width: 100%;
+            }
+
+            #play-pause {
+                display: inline-block;
+                background-color: #3949ca;
+                color: #FFF;
+                padding: 1rem;
+                border-radius: 1rem;
+                outline: none;
+            }
+
+            #pause {
+                position: absolute;
+                top: 10px;
+                left: 50px;
+            }
+
+            #stop {
+                position: absolute;
+                top: 10px;
+                left: 100px;
+            }
+
+            #credit {
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                z-index: 99;
+                padding: 1rem;
+                color: #656565;
+            }
+
+            .player {
+                display: grid;
+                height: 100%;
+                grid-template-rows: calc(100% - 100px) 100px;
+            }
+
+            .player__visualisation {
+                background: rgb(4,2,67);
+                position: relative;
+                background: linear-gradient(180deg, rgba(4,2,67,1) 0%, rgba(25,22,111,1) 100%);
+            }
+
+            .player__progress {
+                background-color: #3949ca;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 50%;
+                height: 5px;
+                z-index: 99;
+            }
+
+            #play-pause:hover {
+                background-color: #050344;
+            }
+
+            .player__controls {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="player">
+            <div class="player__visualisation">
+                <canvas id="visualisation"></canvas>
+                <div class="player__progress"></div>
+            </div>
+            <div class="player__controls">
+                <audio id="audio-source" src="./music.mp3"></audio>
+                <button type="button" id="play-pause">Play</button>
+            </div>
+            
+            <div id="credit">
+                Music by <a href="http://www.bensound.com" target="_blank">bensound.com</a>
+            </div>
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>
